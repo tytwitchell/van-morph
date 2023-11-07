@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import {
   getFirestore,
   collection,
@@ -6,7 +5,10 @@ import {
   query,
   where,
   getDocs,
+  doc,
+  updateDoc
 } from "firebase/firestore";
+
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -35,10 +37,12 @@ async function addToDb(formData) {
       route: route,
       maxSeats: 6,
       numSeats: numSeats,
-      passengers: passengers,
+      passengers: passengers
     });
 
     console.log("Document written with ID: ", docRef.id);
+  
+
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -47,9 +51,64 @@ async function addToDb(formData) {
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   // console.log(doc.id, " => ", doc.data())
-  vansInDb.push(doc.data());
+  const vanData = {
+    docId: doc.id,
+    ...doc.data()
+  }
+  vansInDb.push(vanData)
 });
 
-export { addToDb, vansInDb };
+
+async function handleAddNewPassenger(draggedPassenger, targetVan) {
+    const newPassengers = [...targetVan.passengers, draggedPassenger];
+
+// console.log("Document ID: ", targetVan.docId);
+
+  try {
+    const vanDocRef = doc(db, "vans", targetVan.docId)
+    
+    await updateDoc(vanDocRef, {
+      passengers: newPassengers
+    })
+    console.log("Document updated for ID: ", targetVan.docId)
+  } catch (e) {
+        console.error("Error updating document: ", e);
+    }
+}
+
+
+async function handleRemovePassenger(draggedVan, draggedPassenger) {
+
+  const newPassengers = draggedVan.passengers.filter( passenger => (
+    passenger.uuid !== draggedPassenger.uuid
+  ))
+    
+
+  console.log(newPassengers, ...newPassengers);
+
+  try {
+    const vanDocRef = doc(db, "vans", draggedVan.docId);
+  
+    await updateDoc(vanDocRef, {
+      passengers: newPassengers,
+    })
+
+    console.log("Document written with ID: ", draggedVan.docId);
+    
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+
+}
+ 
+  // doc(db, "vans", targetVan.id);
+  // console.log(targetVan, draggedPassenger);
+
+// /////////////// Next: figure out how to make updateDoc work in handleAddNewPassenger /////////
+ 
+
+
+
+export { addToDb, vansInDb, handleAddNewPassenger, handleRemovePassenger };
 
 
