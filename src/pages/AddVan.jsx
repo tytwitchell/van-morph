@@ -67,22 +67,23 @@ export default function AddVan() {
     const route = document.getElementById("route").value
     const numSeats = numPassengers
     const passengers = []
-    
+    // const vanId = uuidv4();
 
     for (let i = 0; i < numPassengers; i++) {
       const passengerName = document.getElementById(`passenger-name-${i}`).value
       const location = document.getElementById(`location-${i}`).value
-      
-      passengers.push({ passengerName, location })
+      const uuid = uuidv4()
+      passengers.push({ passengerName, location, uuid });
     }
-    ;
+
     const formData = {
       employee,
       route,
       numSeats,
       passengers,
-    };
-    
+    }
+
+    console.log(formData);
     addToDb(formData);
   }
 
