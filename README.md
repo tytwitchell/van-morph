@@ -6,8 +6,9 @@ I built this application to streamline one of my dad's more time consuming daily
 
 1) Steps Taken to Create This Application
 2) Development Progress and Future Feature Sets
-3) Technologies Used
-4) Stumbling and Learning Points
+3) Latest Features
+4) Technologies Used
+5) Stumbling and Learning Points
 
 
 # Steps Taken to Create this Application
@@ -33,7 +34,13 @@ In progress:
 - Enable UI to delete vans.
 - Allow selection of an out of office employee and move passengers to vans with available seats on similar routes.
 - Create a secure sign-in page.
-  
+
+# Latest Features
+
+I created a distinctive loading screen to engage users while the application reallocates passengers from the out-of-office employee's van to other vans before advancing to the next step.
+
+https://github.com/tytwitchell/van-morph/assets/135183794/227ad688-5364-45bb-b7e3-c7c8b9d0cc57
+
 
 # Technologies Used
 
