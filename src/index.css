@@ -82,12 +82,12 @@ main {
     max-width: 600px
 }
 
-form h1 {
+h1 {
 	display: block;
 	text-align: center;
 	padding: 0;
 	margin: 0px 0px 20px 0px;
-	color: #5C5C5C;
+	/* color: #5C5C5C; */
 	font-size:x-large;
 }
 .form-add ul {
@@ -97,8 +97,8 @@ form h1 {
 	list-style: none;
 	padding:0;
 	margin:0;	
-
 }
+
 .form-add li {
 	/* display: block; */
 	padding: 9px;
@@ -113,7 +113,7 @@ form h1 {
 }
 
 .form-add input,
- .form-add select { 
+select { 
     background: none;
 }
 
@@ -139,7 +139,7 @@ form h1 {
 	text-align: center;
 }
 
-.form-add li > label {
+li > label {
 	display: block;
 	float: left;
 	margin-top: -27.5px;
@@ -163,7 +163,8 @@ form h1 {
 	font-family: inherit;
 }
 
-.form-add select {
+.form-add select,
+select {
     width: 100%;
 	display: block;
 	outline: none;
@@ -176,7 +177,7 @@ form h1 {
 	cursor:pointer 
 }
 
-.form-add li > span {
+li > span {
 	background-color: #00253d20;
 	display: block;
 	padding: 3px;
@@ -196,13 +197,17 @@ form h1 {
 	border: none;
 	padding: 10px 20px 10px 20px;
 	border-radius: 3px;
-	color: #D2E2FF;
+	color: #f1f5fd;
     font-weight: 600;
 }
 
 .form-add input[type="submit"]:hover{
 	cursor: pointer;
-	color:#ffffffed;
+	background: #00253dbc;
+	color:#ffffff;
+}
+
+.form-add input[type="submit"]:active{
 	box-shadow: inset 3px 3px 8px -3px #000000;
 }
 
@@ -264,9 +269,70 @@ form h1 {
 }
 
 
+/************** Select Employee Styles *****************/
 
 
+.employee-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;	
+	position: relative
+}
 
+.employee-container ul {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	list-style: none;
+	padding:0;
+	
+}
+
+.employee-container li:not(:last-child) {
+	padding: 9px;
+	border:1px solid #00253d42;
+	border-radius: 3px;
+
+}
+
+.employee-container li:hover,
+.employee-container li:focus {
+	box-shadow: inset 3px 3px 5px -5px;
+}
+
+.btn-next {
+	display: flex;
+	gap: .25rem;
+	align-items: center;
+	background: #00253daa;
+	border: none;
+	padding: 10px 15px 10px 20px;
+	border-radius: 3px;
+	color: #f1f5fd;
+    font-weight: 600;
+}
+
+.btn-next:hover,
+.btn-next:focus {
+	cursor: pointer;
+	background: #00253dbc;
+	color:#ffffff;
+}
+
+.btn-next:active { 
+	box-shadow: inset 3px 3px 8px -3px #000000;
+}
+
+/********* Loading Container ***********/
+
+.loading-container {
+	position: absolute;
+	min-height: 5rem;
+	min-width: 5rem;
+	top: 10%;
+	left: 50%
+}
 
 
 
