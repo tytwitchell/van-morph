@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  vansInDb,
-  handleAddNewPassenger,
-  handleRemovePassenger,
-} from "../firebase";
-
+import React, { useState, useContext } from "react";
+import { handleAddNewPassenger, handleRemovePassenger } from "../firebase";
+import { vanContext } from "../components/Layout";
 
 export default function Vans() {
+  const { dbVans, setDbVans } = useContext(vanContext);
   const [draggedPassenger, setDraggedPassenger] = useState(null);
   const [draggedVan, setDraggedVan] = useState(null);
-  const [dbVans, setDbVans] = useState(vansInDb);
+
 
   function handleDragStart(passenger, van) {
     setDraggedPassenger(passenger);
-    setDraggedVan(van)
+    setDraggedVan(van);
   }
 
   function handleDragEnd() {
@@ -36,58 +33,43 @@ export default function Vans() {
   function handleDragLeave(e) {
     e.currentTarget.classList.remove("drag-over");
     e.currentTarget.classList.remove("dragged-passenger");
-
   }
- 
+
   // function to add passengers to other vans in DB
   // function to remove passengers from their current van in DB
 
-function handleDrop(e, targetVan) {
+  function handleDrop(e, targetVan) {
     e.preventDefault();
     e.currentTarget.classList.remove("drag-over");
     e.currentTarget.classList.remove("dragged-passenger");
-   
-    
+
     if (draggedPassenger && draggedVan !== targetVan) {
-      
-          handleAddNewPassenger(draggedPassenger, targetVan),
-          handleRemovePassenger(draggedVan, draggedPassenger)
-    
+      handleAddNewPassenger(draggedPassenger, targetVan),
+        handleRemovePassenger(draggedVan, draggedPassenger);
 
-        const updatedDbVans = [...dbVans];
-        const draggedVanIndex = updatedDbVans.findIndex((van) => van === draggedVan);
-        const targetVanIndex = updatedDbVans.findIndex((van) => van === targetVan);
+      const updatedDbVans = [...dbVans];
+      const draggedVanIndex = updatedDbVans.findIndex(
+        (van) => van === draggedVan
+      );
+      const targetVanIndex = updatedDbVans.findIndex(
+        (van) => van === targetVan
+      );
 
-        updatedDbVans[draggedVanIndex] = {
-            ...draggedVan,
-            passengers: draggedVan.passengers.filter((passenger) => passenger !== draggedPassenger),
-          };
+      updatedDbVans[draggedVanIndex] = {
+        ...draggedVan,
+        passengers: draggedVan.passengers.filter(
+          (passenger) => passenger !== draggedPassenger
+        ),
+      };
 
-        updatedDbVans[targetVanIndex] = {
-          ...targetVan,
-          passengers: [...targetVan.passengers, draggedPassenger],
-        };
+      updatedDbVans[targetVanIndex] = {
+        ...targetVan,
+        passengers: [...targetVan.passengers, draggedPassenger],
+      };
 
-        setDbVans(updatedDbVans);
+      setDbVans(updatedDbVans);
     }
-
   }
-   
-    
-    
-    
-
-   
-      
-      // Implement the logic to move the passenger from one van to another
-      // You'll need to update the state and re-render the component
-      // Example: movePassenger(draggedPassenger, draggedVan, targetVan);
-      // After moving the passenger, you may need to update the state
-      // to reflect the changes and re-render the component.
-    
-
-    // call add and remove functions and pass e.currentTarget
-
 
   const vansHtml = dbVans.map((van) => {
     const passengerHtml = van.passengers.map((passenger) => {

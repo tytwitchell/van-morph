@@ -6,7 +6,7 @@ import {
   where,
   getDocs,
   doc,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
@@ -17,7 +17,7 @@ const firebaseConfig = {
   projectId: "van-morph-engine",
   storageBucket: "van-morph-engine.appspot.com",
   messagingSenderId: "669932279923",
-  appId: "1:669932279923:web:9c00e7393cecd5e8b4b206"
+  appId: "1:669932279923:web:9c00e7393cecd5e8b4b206",
 };
 
 // Initialize Firebase
@@ -26,7 +26,7 @@ const db = getFirestore(app);
 
 const q = query(collection(db, "vans"), where("maxSeats", "==", 6));
 const querySnapshot = await getDocs(q);
-const vansInDb = []
+const vansInDb = [];
 
 async function addToDb(formData) {
   const { employee, numSeats, passengers, route } = formData;
@@ -37,12 +37,10 @@ async function addToDb(formData) {
       route: route,
       maxSeats: 6,
       numSeats: numSeats,
-      passengers: passengers
+      passengers: passengers,
     });
 
     console.log("Document written with ID: ", docRef.id);
-  
-
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -53,62 +51,51 @@ querySnapshot.forEach((doc) => {
   // console.log(doc.id, " => ", doc.data())
   const vanData = {
     docId: doc.id,
-    ...doc.data()
-  }
-  vansInDb.push(vanData)
+    ...doc.data(),
+  };
+  vansInDb.push(vanData);
 });
 
-
 async function handleAddNewPassenger(draggedPassenger, targetVan) {
-    const newPassengers = [...targetVan.passengers, draggedPassenger];
+  const newPassengers = [...targetVan.passengers, draggedPassenger];
 
-// console.log("Document ID: ", targetVan.docId);
+  // console.log("Document ID: ", targetVan.docId);
 
   try {
-    const vanDocRef = doc(db, "vans", targetVan.docId)
-    
+    const vanDocRef = doc(db, "vans", targetVan.docId);
+
     await updateDoc(vanDocRef, {
-      passengers: newPassengers
-    })
-    console.log("Document updated for ID: ", targetVan.docId)
+      passengers: newPassengers,
+    });
+    console.log("Document updated for ID: ", targetVan.docId);
   } catch (e) {
-        console.error("Error updating document: ", e);
-    }
+    console.error("Error updating document: ", e);
+  }
 }
 
-
 async function handleRemovePassenger(draggedVan, draggedPassenger) {
-
-  const newPassengers = draggedVan.passengers.filter( passenger => (
-    passenger.uuid !== draggedPassenger.uuid
-  ))
-    
+  const newPassengers = draggedVan.passengers.filter(
+    (passenger) => passenger.uuid !== draggedPassenger.uuid
+  );
 
   console.log(newPassengers, ...newPassengers);
 
   try {
     const vanDocRef = doc(db, "vans", draggedVan.docId);
-  
+
     await updateDoc(vanDocRef, {
       passengers: newPassengers,
-    })
+    });
 
     console.log("Document written with ID: ", draggedVan.docId);
-    
   } catch (e) {
     console.error("Error adding document: ", e);
   }
-
 }
- 
-  // doc(db, "vans", targetVan.id);
-  // console.log(targetVan, draggedPassenger);
+
+// doc(db, "vans", targetVan.id);
+// console.log(targetVan, draggedPassenger);
 
 // /////////////// Next: figure out how to make updateDoc work in handleAddNewPassenger /////////
- 
-
-
 
 export { addToDb, vansInDb, handleAddNewPassenger, handleRemovePassenger };
-
-

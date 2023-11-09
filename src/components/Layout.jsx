@@ -1,17 +1,28 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Header from './Header'
+import React, { createContext, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import {
+  vansInDb,
+  handleAddNewPassenger,
+  handleRemovePassenger,
+} from "../firebase";
+
+const vanContext = createContext();
+export { vanContext };
 
 export default function Layout() {
-    return (
-      <>
-        {/* <div className="background-img"></div> */}
-        <div className="page-wrapper">
-          <Header />
-          <main>
+  const [dbVans, setDbVans] = useState(vansInDb);
+
+  return (
+    <>
+      <div className="page-wrapper">
+        <Header />
+        <main>
+          <vanContext.Provider value={{ dbVans, setDbVans }}>
             <Outlet />
-          </main>
-        </div>
-      </>
-    );
+          </vanContext.Provider>
+        </main>
+      </div>
+    </>
+  );
 }

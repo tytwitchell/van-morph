@@ -1,5 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function VansForToday() {
-  return <div>VansForToday</div>;
+  return <div>Today's Vans Functionality Coming Soon!</div>;
 }
