@@ -1,20 +1,26 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { vanContext } from "../components/Layout";
 import { AiOutlineArrowRight } from "react-icons/Ai";
-
+import Loading from "../components/Loading";
 
 export default function Employee() {
-
   const { dbVans } = useContext(vanContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
-  const employeeSelectHtml = dbVans.map( van => {
+  const employeeSelectHtml = dbVans.map((van) => {
     return <option key={van.employee}> {van.employee} </option>;
-  })
-
+  });
 
   function handleBtnNextClick() {
-    console.log("YOU CLICKED ME??!!")
+    // write logic to initiate the below if option selected is 'true'
+    // if option selected is null => produce a warning saying no option is selected
+    setLoading(true);
+    setTimeout(() => setLoading(false), 2500);
+    setTimeout(() => navigate("../today"), 2500);
   }
+
 
   return (
     <div className="employee-container">
@@ -40,6 +46,7 @@ export default function Employee() {
           </button>
         </li>
       </ul>
+      {loading && <Loading />}
     </div>
   );
 }
