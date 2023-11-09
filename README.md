@@ -13,7 +13,7 @@ I built this application to streamline one of my client's more time consuming da
 
 # Steps Taken to Create this Application
 
-1) Data Collection: I began by sitting down with my dad to understand his specific needs and objectives so I could define the project's scope.
+1) Data Collection: I began by sitting down with my client to understand his specific needs and objectives so I could define the project's scope.
 
 2) Planning and Design: I then created a detailed project plan outlining the features, timeline, and resource requirements. I also designed the application's user interface and opted to use Firestore as the database.
 
@@ -21,7 +21,7 @@ I built this application to streamline one of my client's more time consuming da
 
 4) Test and Quality Assurance: After completing the development of the application, I will review the code to find ways to improve its functionality and efficiency.
 
-5) Ongoing Support: Once I release the minimum viable product for my dad to use, I will maintain constant communication with him to identify areas for improvement and to expand the application's functionality to further assist his day-to-day tasks.
+5) Ongoing Support: Once I release the minimum viable product for use, I will maintain constant communication with my client to identify areas for improvement and to expand the application's functionality to further assist his day-to-day tasks.
 
 
 # Development Progress and Future Feature Sets
