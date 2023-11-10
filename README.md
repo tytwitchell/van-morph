@@ -15,7 +15,7 @@ I built this application to streamline one of my client's more time consuming da
 
 1) Data Collection: I began by sitting down with my client to understand his specific needs and objectives so I could define the project's scope.
 
-2) Planning and Design: I then created a detailed project plan outlining the features, timeline, and resource requirements. I also designed the application's user interface and opted to use Firestore as the database.
+2) Planning: I created a detailed project plan outlining the features, timeline, and resource requirements. I then created a kanban board to organize the progress of the tasks needed to complete the outlined features. 
 
 3) Development (In progress): After I had a clear picture of what I needed to do to complete this project, I started to code with a priority of making sure that my components and pages were kept organized. 
 
