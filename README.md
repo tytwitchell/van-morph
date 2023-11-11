@@ -37,9 +37,9 @@ In progress:
 
 # Latest Features
 
-I created a distinctive loading screen to engage users while the application reallocates passengers from the out-of-office employee's van to other vans before advancing to the next step.
+I created a warning message to inform the user that they must select an employee before proceeding to the next step. This requirement ensures the application can effectively reallocate passengers from the out-of-office employee's van to other vans.
 
-https://github.com/tytwitchell/van-morph/assets/135183794/227ad688-5364-45bb-b7e3-c7c8b9d0cc57
+https://github.com/tytwitchell/van-morph/assets/135183794/9e836a2e-edc3-4a05-ac98-3cca06cd8eae
 
 
 # Technologies Used
