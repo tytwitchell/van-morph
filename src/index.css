@@ -3,6 +3,48 @@
   margin: 0;
 }
 
+:root {
+  /* gray styles */
+  --background-gray: #f3f4f6;
+  --color-gray: #1f2937;
+
+  /* red styles */
+  --background-red: #fee2e2;
+  --color-red: #991b1b;
+  --alt-background-red: #fef2f2;
+  --alt-color-red: #b45309;
+
+  /* yellow styles */
+  --background-yellow: #fcd48ade;
+  --color-yellow: #92400e;
+  --alt-background-yellow: #fffbeb;
+  --alt-color-yellow: #b45309;
+
+  /* green styles */
+  --background-green: #d1fae5;
+  --color-green: #065f46;
+  --alt-background-green: #ecfdf5;
+  --alt-color-green: #047857;
+
+  /* blue styles */
+  --background-blue: #dbeafe;
+  --color-blue: #1e40af;
+  --alt-background-blue: #eff6ff;
+  --alt-color-blue: #1c51b9;
+
+  /* indigo styles */
+  --background-indigo: #e0e7ff;
+  --color-indigo: #3730a3;
+
+  /* purple styles */
+  --background-purple: #ede9fe;
+  --color-purple: #5b21b6;
+
+  /* pink styles */
+  --background-pink: #fce7f3;
+  --color-pink: #9d174d;
+}
+
 .page-wrapper {
   background-image: url("./assets/images/light-shadows.jpg");
   background-color: rgba(228, 244, 255, 0.5);
@@ -63,7 +105,7 @@ main {
   border-radius: 2px;
   margin-top: 5rem;
   padding: 1rem;
-  box-shadow: inset 3px 3px 10px -3px;
+  box-shadow: inset 3px 3px 15px -3px;
   max-width: 1000px;
   margin-inline: auto;
 }
@@ -265,7 +307,7 @@ li > span {
 
 .van-container:hover,
 .van-container:focus {
-   box-shadow: inset 2px 2px 10px -3px;
+  box-shadow: inset 2px 2px 10px -3px;
 }
 
 .van-container:nth-child(1) {
@@ -373,12 +415,12 @@ li > span {
   box-shadow: 2px 2px 20px -2px #232323;
   top: 50%;
   background-image: url("./assets/images/light-shadows.jpg");
-  background-color: rgba(228, 244, 255, 0.749);
+  background-color: rgba(230, 243, 251, 0.749);
   background-blend-mode: color-burn;
   background-repeat: no-repeat;
   background-size: cover;
   color: #00253dd5;
-  opacity: .925;
+  opacity: 0.91;
 }
 
 .loading-container h2 {
@@ -389,7 +431,7 @@ li > span {
   grid-row: 2;
   align-self: last baseline;
   transform: rotate(-8deg);
-  opacity: 0
+  opacity: 0;
 }
 
 .smoke:nth-child(3) {
@@ -397,17 +439,124 @@ li > span {
   align-self: last baseline;
   justify-self: center;
   transform: rotate(10deg);
-  opacity: 0
+  opacity: 0;
 }
 .smoke:nth-child(4) {
   grid-row: 2;
   align-self: last baseline;
-  opacity: 0
+  opacity: 0;
 }
 
 .loading-van {
   grid-row: 2 / span 3;
   align-self: center;
-  opacity: .8;
+  opacity: 0.8;
 }
 
+/********** banner **********/
+
+/* .banner-container {
+  width: 100%;
+} */
+
+.banner-el-container {
+  display: grid;
+  grid-template: auto auto / 20px auto;
+  justify-items: left;
+  padding: 1rem;
+  width: 80vw;
+  max-width: 450px;
+  border-radius: 6px;
+  align-items: left;
+  box-shadow: 3px 8px 20px -10px #232323;
+  position: fixed;
+  bottom: 50%;
+  transform: translateY(0) translateX(-50%);
+  animation: slideUp 0.5s ease-out, shake 0.5s 0.5s, slideDown 0.5s 3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%) translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-50%) rotate(0);
+  }
+  25% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0);
+  }
+}
+
+@keyframes slideDown {
+    from {
+      transform: translateY(0) translateX(-50%);
+      opacity: 1;
+    }
+
+    to {
+    transform: translateY(100%) translateX(-50%);
+    opacity: 0;
+  }
+}
+
+.banner-img {
+  grid-row: 1;
+  grid-column: 1;
+  height: 1.25rem;
+}
+
+.banner-title {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.banner-description {
+  grid-row: 2;
+  grid-column: 2;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.7;
+  line-height: 20px;
+  margin-left: 0.5rem;
+}
+
+.success {
+  background-color: var(--alt-background-green);
+  color: var(--alt-color-green);
+}
+
+.warning {
+  background-color: var(--background-yellow);
+  color: var(--color-yellow);
+}
+
+.error {
+  background-color: var(--alt-background-red);
+  color: var(--alt-color-red);
+}
+
+.neutral {
+  background-color: var(--alt-background-blue);
+  color: var(--alt-color-blue);
+}
