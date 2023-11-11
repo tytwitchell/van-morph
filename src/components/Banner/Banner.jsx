@@ -5,15 +5,13 @@ export { BannerContext };
 
 export default function Banner({ children }) {
   const [bannerType, setBannerType] = React.useState("");
-  const [bannerDescription, setBannerDescription] = React.useState("");
 
   return (
     <BannerContext.Provider
       value={{
         bannerType,
         setBannerType,
-        bannerDescription,
-        setBannerDescription,
+     
       }}
     >
       <div className="banner-container">{children}</div>

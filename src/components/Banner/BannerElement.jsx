@@ -8,8 +8,6 @@ import { VscError } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 
 export default function BannerElement({ varient, text }) {
-  const { bannerDescription, setBannerDescription } =
-    React.useContext(BannerContext);
   const bannerData = {
     success: {
       titleText: "Congratulations!",
@@ -33,15 +31,11 @@ export default function BannerElement({ varient, text }) {
     bannerImg: "",
   };
 
-  if (text) {
-    setBannerDescription(text);
-  }
-
   return (
     <div className={`banner-el-container ${varient}`}>
       {bannerImg}
       <h4 className="banner-title">{titleText}</h4>
-      <p className="banner-description">{bannerDescription}</p>
+      <p className="banner-description">{text}</p>
     </div>
   );
 }
