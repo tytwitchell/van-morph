@@ -28,12 +28,14 @@ I built this application to streamline one of my client's more time consuming da
 
 Completed: 
 - Created a form for saving van details (employee name, route, passengers).
-- Enable van editing using a 'drag & drog' UI experience for passenger transfers.
-
+- Developed “drag and drop” UI that enables the user to move passengers manually from one van to another.
+- Enabled the user to select an out of office employee.
+- Added warning and loading messages when applicable.
+  
 In progress: 
 - Enable UI to delete vans.
-- Allow selection of an out of office employee and move passengers to vans with available seats on similar routes.
-- Create a secure sign-in page.
+- Add logic that assigns passengers from the out of office employee’s van to other vans based on capacity and proximity to route.
+- Create a secure login page.
 
 # Latest Features
 
