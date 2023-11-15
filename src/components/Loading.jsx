@@ -26,7 +26,7 @@ export default function Loading() {
       <HiMiniCloud style={styles3} className="smoke" size="1rem" />
       <HiCloud style={styles2} className="smoke" size=".8rem" />
       <HiCloud style={styles1} className="smoke" size=".5rem" />
-      <FaVanShuttle className="loading-van" size="2.5rem" fill="solid" />
+      <FaVanShuttle className="loading-van" size="2rem" fill="solid" />
     </div>
   );
 }
