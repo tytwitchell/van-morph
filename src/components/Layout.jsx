@@ -12,13 +12,16 @@ export { vanContext };
 
 export default function Layout() {
   const [dbVans, setDbVans] = useState(vansInDb);
-
+  const [selectedEmployee, setSelectedEmployee] = useState('');
+  
   return (
     <>
       <div className="page-wrapper">
         <Header />
         <main>
-          <vanContext.Provider value={{ dbVans, setDbVans }}>
+          <vanContext.Provider
+            value={{ dbVans, setDbVans, selectedEmployee, setSelectedEmployee }}
+          >
             <Outlet />
           </vanContext.Provider>
         </main>

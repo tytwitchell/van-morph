@@ -1,67 +1,91 @@
-import React, { useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { FaVanShuttle } from "react-icons/fa6";
 
-
 export default function Header() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [fixedHeader, setFixedHeader] = useState(false);
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", function () {
-      const header = document.querySelector("header")
+  useEffect(() => {
+    function handleScroll() {
+      const header = document.querySelector("header");
+      const currentScrollPos = window.scrollY;
 
-      if (window.scrollY > 10) {
-        header.style.backgroundColor = "rgba(243, 245, 247, 9)";
-        header.style.opacity = ".8";
-        header.style.boxShadow = "0 0 8px"
+      if (currentScrollPos > 5 && currentScrollPos < 20 && currentScrollPos > prevScrollPos) {
+
+        header.classList.remove("header-default");
+        header.classList.add("header-top-hidden");
+        
+
+      } else if (currentScrollPos > 20 && currentScrollPos > prevScrollPos) {
+
+        header.classList.remove("header-default","header-scroll-up","header-top-hidden" );
+        header.classList.add("header-scrolled");
+        setFixedHeader(true);
+
+      }  else if (fixedHeader && currentScrollPos > 25) {
+
+        header.classList.remove("header-scrolled");
+        header.classList.add("header-scroll-up");
+
       } else {
-        header.style.backgroundColor = "rgba(243, 245, 247, 0)"; // Original background color
-        header.style.boxShadow = "0 0 0";
-      }
 
-    })
-  } ,[])
+        header.classList.remove(
+          "header-scrolled",
+          "header-scroll-up",
+          "header-top-hidden"
+        );
+        header.classList.add("header-default");
+        setFixedHeader(false);
+
+      }
+      setPrevScrollPos(currentScrollPos);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
 
   const activeStyles = {
     color: "#00497A",
     textDecoration: "underline",
   };
 
-    return (
-      <header>
-        <Link to="/">
-          {/* <FaVanShuttle /> */}
-          <h1 className="logo">
-            <span>Van</span>
-            <FaVanShuttle className="img-logo" />
-            Morph
-          </h1>
-        </Link>
-        <nav>
-          <NavLink
-            to="/"
-            style={({ isActive }) => (isActive ? activeStyles : {})}
-          >
-            Van List
-          </NavLink>
-          <NavLink
-            to="/employee"
-            style={({ isActive }) => (isActive ? activeStyles : {})}
-          >
-            Select Employee
-          </NavLink>
-          <NavLink
-            to="/today"
-            style={({ isActive }) => (isActive ? activeStyles : {})}
-          >
-            Today's Vans
-          </NavLink>
-          <NavLink
-            to="/add"
-            style={({ isActive }) => (isActive ? activeStyles : {})}
-          >
-            Add Van
-          </NavLink>
-        </nav>
-      </header>
-    );
+  return (
+    <header className="header-default">
+      <Link to="/">
+        {/* <FaVanShuttle /> */}
+        <h1 className="logo">
+          <span>Van</span>
+          <FaVanShuttle className="img-logo" />
+          Morph
+        </h1>
+      </Link>
+      <nav className="nav-default">
+        <NavLink
+          to="/"
+          style={({ isActive }) => (isActive ? activeStyles : {})}
+        >
+          Van List
+        </NavLink>
+        <NavLink
+          to="/employee"
+          style={({ isActive }) => (isActive ? activeStyles : {})}
+        >
+          Select Employee
+        </NavLink>
+        <NavLink
+          to="/today"
+          style={({ isActive }) => (isActive ? activeStyles : {})}
+        >
+          Today's Vans
+        </NavLink>
+        <NavLink
+          to="/add"
+          style={({ isActive }) => (isActive ? activeStyles : {})}
+        >
+          Add Van
+        </NavLink>
+      </nav>
+    </header>
+  );
 }
