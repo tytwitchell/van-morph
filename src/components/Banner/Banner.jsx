@@ -11,7 +11,6 @@ export default function Banner({ children }) {
       value={{
         bannerType,
         setBannerType,
-     
       }}
     >
       <div className="banner-container">{children}</div>

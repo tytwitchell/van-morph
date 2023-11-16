@@ -9,6 +9,7 @@ export default function Employee() {
   const { dbVans, selectedEmployee, setSelectedEmployee } =
     useContext(vanContext);
   const [loading, setLoading] = useState(false);
+  const [warningBanner, setWarningBanner] = useState(false);
   const [errorBanner, setErrorBanner] = useState(false);
   const navigate = useNavigate();
   const selectRef = useRef(null);
@@ -22,17 +23,28 @@ export default function Employee() {
 
   function handleOptionChange(e) {
     setSelectedEmployee(e.target.value);
-    e.target.value && setErrorBanner(false);
+    e.target.value && setWarningBanner(false);
   }
 
   function handleBtnNextClick() {
-    if (selectedEmployee) {
+    const selectedEmployeeVan = dbVans.find((van) => {
+      if (selectedEmployee && van.employee === selectedEmployee) {
+        return van;
+      }
+    })
+
+    if (!selectedEmployee) {
+      setWarningBanner(true);
+      setTimeout(() => setWarningBanner(false), 3250);
+    } else if (selectedEmployeeVan.passengers.length < 1) {
+      setErrorBanner(true);
+      setTimeout(() => setErrorBanner(false), 3250);
+    } else if (selectedEmployee) {
       setLoading(true);
       setTimeout(() => setLoading(false), 2500);
       setTimeout(() => navigate("../today"), 2500);
     } else {
-      setErrorBanner(true);
-      setTimeout(() => setErrorBanner(false), 3250);
+      console.log("error");
     }
   }
 
@@ -63,11 +75,19 @@ export default function Employee() {
         </li>
       </ul>
       {loading && <Loading />}
-      {errorBanner && (
+      {warningBanner && (
         <Banner>
           <Banner.Element
             varient="warning"
             text="Please select an employee before proceeding to the next step"
+          />
+        </Banner>
+      )}
+      {errorBanner && (
+        <Banner>
+          <Banner.Element
+            varient="error"
+            text="There are no passengers in the van that you selected"
           />
         </Banner>
       )}

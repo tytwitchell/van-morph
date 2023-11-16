@@ -25,12 +25,13 @@ export default function VansForToday() {
       }
     }
 
-    if (absentVan) {
-      localStorage.setItem("absentVan", JSON.stringify(absentVan))
+    if (selectedEmployee !== "") {
+      localStorage.setItem("absentVan", JSON.stringify(absentVan));
     }
     
     const absentVanFromStorage = JSON.parse(localStorage.getItem("absentVan"));
     setInactiveVan(absentVanFromStorage);
+
 
     const allVans = availableVans.map((van) => {
       if (van.passengers.length < 6) {

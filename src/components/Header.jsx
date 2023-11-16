@@ -39,18 +39,6 @@ export default function Header() {
         setFixedHeader(false);
 
       }
-      //  if (currentScrollPos > 20 && currentScrollPos > prevScrollPos) {
-      //    header.classList.remove("header-default", "header-hidden");
-      //    header.classList.add("header-scrolled");
-      //    setFixedHeader(true)
-      //  } else if (fixedHeader) {
-      //    header.classList.remove("header-scrolled");
-      //    header.classList.add("header-default");
-      //  } else {
-      //    header.classList.remove("header-scrolled", "header-hidden");
-      //    header.classList.add("header-default");
-      //  }
-
       setPrevScrollPos(currentScrollPos);
     }
 
