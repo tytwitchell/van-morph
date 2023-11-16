@@ -1,6 +1,12 @@
 import React, { useState, useContext } from "react";
 import { handleAddNewPassenger, handleRemovePassenger } from "../firebase";
 import { vanContext } from "../components/Layout";
+import {
+  handleDragOver,
+  handleDrag,
+  handleDragEnter,
+  handleDragLeave,
+} from "../utils/functions"
 
 export default function Vans() {
   const { dbVans, setDbVans } = useContext(vanContext);
@@ -17,27 +23,6 @@ export default function Vans() {
     setDraggedPassenger(null);
   }
 
-  function handleDragOver(e) {
-    e.preventDefault();
-  }
-
-  function handleDrag(e) {
-    e.currentTarget.classList.add("dragged-passenger");
-  }
-
-  function handleDragEnter(e) {
-    e.preventDefault();
-    e.currentTarget.classList.add("drag-over");
-  }
-
-  function handleDragLeave(e) {
-    e.currentTarget.classList.remove("drag-over");
-    e.currentTarget.classList.remove("dragged-passenger");
-  }
-
-  // function to add passengers to other vans in DB
-  // function to remove passengers from their current van in DB
-
   function handleDrop(e, targetVan) {
     e.preventDefault();
     e.currentTarget.classList.remove("drag-over");
@@ -45,7 +30,7 @@ export default function Vans() {
 
     if (draggedPassenger && draggedVan !== targetVan) {
       handleAddNewPassenger(draggedPassenger, targetVan),
-        handleRemovePassenger(draggedVan, draggedPassenger);
+      handleRemovePassenger(draggedVan, draggedPassenger);
 
       const updatedDbVans = [...dbVans];
       const draggedVanIndex = updatedDbVans.findIndex(
