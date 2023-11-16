@@ -39,6 +39,11 @@ In progress:
 
 # Latest Features
 
+I created a navbar transition that shows the navbar when the user scrolls down, but also hides the navbar when the user scrolls up. 
+
+https://github.com/tytwitchell/van-morph/assets/135183794/59147757-2bb5-43f3-b4ab-8314d5396e41
+
+
 I created a warning message to inform the user that they must select an employee before proceeding to the next step. This requirement ensures the application can effectively reallocate passengers from the out-of-office employee's van to other vans.
 
 https://github.com/tytwitchell/van-morph/assets/135183794/9e836a2e-edc3-4a05-ac98-3cca06cd8eae
