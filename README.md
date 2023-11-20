@@ -39,7 +39,7 @@ In progress:
 
 # Latest Features
 
-I created a navbar transition that shows the navbar when the user scrolls down, but also hides the navbar when the user scrolls up. 
+I updated the navbar to have it show when the user scrolls down and moves it out of the way when the user scrolls up. 
 
 https://github.com/tytwitchell/van-morph/assets/135183794/59147757-2bb5-43f3-b4ab-8314d5396e41
 
