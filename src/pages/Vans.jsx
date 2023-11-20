@@ -6,13 +6,12 @@ import {
   handleDrag,
   handleDragEnter,
   handleDragLeave,
-} from "../utils/functions"
+} from "../utils/functions";
 
 export default function Vans() {
   const { dbVans, setDbVans } = useContext(vanContext);
   const [draggedPassenger, setDraggedPassenger] = useState(null);
   const [draggedVan, setDraggedVan] = useState(null);
-
 
   function handleDragStart(passenger, van) {
     setDraggedPassenger(passenger);
@@ -28,31 +27,35 @@ export default function Vans() {
     e.currentTarget.classList.remove("drag-over");
     e.currentTarget.classList.remove("dragged-passenger");
 
-    if (draggedPassenger && draggedVan !== targetVan) {
-      handleAddNewPassenger(draggedPassenger, targetVan),
-      handleRemovePassenger(draggedVan, draggedPassenger);
+    try {
+      if (draggedPassenger && draggedVan !== targetVan) {
+        handleAddNewPassenger(draggedPassenger, targetVan),
+          handleRemovePassenger(draggedVan, draggedPassenger);
 
-      const updatedDbVans = [...dbVans];
-      const draggedVanIndex = updatedDbVans.findIndex(
-        (van) => van === draggedVan
-      );
-      const targetVanIndex = updatedDbVans.findIndex(
-        (van) => van === targetVan
-      );
+        const updatedDbVans = [...dbVans];
+        const draggedVanIndex = updatedDbVans.findIndex(
+          (van) => van === draggedVan
+        );
+        const targetVanIndex = updatedDbVans.findIndex(
+          (van) => van === targetVan
+        );
 
-      updatedDbVans[draggedVanIndex] = {
-        ...draggedVan,
-        passengers: draggedVan.passengers.filter(
-          (passenger) => passenger !== draggedPassenger
-        ),
-      };
+        updatedDbVans[draggedVanIndex] = {
+          ...draggedVan,
+          passengers: draggedVan.passengers.filter(
+            (passenger) => passenger !== draggedPassenger
+          ),
+        };
 
-      updatedDbVans[targetVanIndex] = {
-        ...targetVan,
-        passengers: [...targetVan.passengers, draggedPassenger],
-      };
+        updatedDbVans[targetVanIndex] = {
+          ...targetVan,
+          passengers: [...targetVan.passengers, draggedPassenger],
+        };
 
-      setDbVans(updatedDbVans);
+        setDbVans(updatedDbVans);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   }
 

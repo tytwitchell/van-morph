@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.absentVanContainer,
+.uneditableVanContainer,
 .vanContainer {
   display: grid;
   grid-template-columns: repeat(2, auto);

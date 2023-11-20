@@ -31,7 +31,7 @@ export default function Employee() {
       if (selectedEmployee && van.employee === selectedEmployee) {
         return van;
       }
-    })
+    });
 
     if (!selectedEmployee) {
       setWarningBanner(true);
