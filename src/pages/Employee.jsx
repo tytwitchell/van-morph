@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { vanContext } from "../components/Layout";
-import { AiOutlineArrowRight } from "react-icons/Ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import Loading from "../components/Loading";
 import Banner from "../components/Banner/index";
 

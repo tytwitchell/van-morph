@@ -3,7 +3,7 @@ import { BannerContext } from "./Banner";
 import {
   AiOutlineCheckCircle,
   AiOutlineExclamationCircle,
-} from "react-icons/Ai";
+} from "react-icons/ai";
 import { VscError } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 
