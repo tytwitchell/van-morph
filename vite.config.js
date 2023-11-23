@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       external: ["react-icons/Ai"],
     },
+    target: "esnext",
   },
-
-  targets: ["chrome87", "edge88", "firefox78", "safari14"],
 });
