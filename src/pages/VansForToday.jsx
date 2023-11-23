@@ -1,19 +1,22 @@
 import { useContext, useState, useEffect } from "react";
-import styles from "./VansForToday.module.css";
+
 import {
   handleDragOver,
   handleDrag,
   handleDragEnter,
   handleDragLeave,
-} from "../../utils/functions";
+} from "../utils/functions";
 
-import { vanContext } from "../../components/Layout";
+import { vanContext } from "../components/Layout";
+import InactiveVan from "../components/VansForTodayHtml/InactiveVan"
+import UpdatedVans from "../components/VansForTodayHtml/UpdatedVans";
+import AllVans from "../components/VansForTodayHtml/AllVans";
 
 /**
+ * 
  *IF NAV TO TODAYS VANS IS TRUE SET RERENDER STATE AS TRUE ON THIS PAGE TO RERENDER THE PAGE
  *  - add a state that is called Rerender and set to false.  Once loading screen is complete,
  *    change this state to true to rerender this page and have the vans rendered.
- *
  */
 
 export default function VansForToday() {
@@ -29,6 +32,7 @@ export default function VansForToday() {
 
   const [draggedPassenger, setDraggedPassenger] = useState(null);
   const [draggedVan, setDraggedVan] = useState(null);
+
   /**
    * HTML is not rendering automatically when user switches to the page (local storage is null for all except for inactive van
    * because inactive van storage was set on employee page)
@@ -38,7 +42,6 @@ export default function VansForToday() {
    */
 
   useEffect(() => {
-  
     const storedInactiveVan =
       JSON.parse(localStorage.getItem("inactiveVan")) || []
     const storedUpdatedVans =
@@ -48,7 +51,6 @@ export default function VansForToday() {
     setInactiveVan(storedInactiveVan)
     setUpdatedVans(storedUpdatedVans)
     setAllVans(storedAllVans)
-
   }, []);
 
   useEffect(() => {
@@ -85,7 +87,6 @@ export default function VansForToday() {
             fullVansArr.push(van);
           }
         }
-
         setInactiveVan(absentVanArr);
         setAvailableVans(availableVansArr);
         setFullVans(fullVansArr);
@@ -181,136 +182,24 @@ export default function VansForToday() {
   //   }
   // }
 
-  function InactiveVanHtml({ vans }) {
-    if (!Array.isArray(vans)) {
-      console.log("inactive vans not working");
-      return null; // or an appropriate fallback
-    }
 
-    const vansHtml = vans.map((van) => {
-      const passengerHtml = van.passengers.map((passenger) => {
-        const { passengerName, location } = passenger;
-
-        return (
-          <p className={styles.passenger} key={passengerName + location}>
-            {passengerName}
-          </p>
-        );
-      });
-
-      return (
-        <div
-          className={styles.uneditableVanContainer}
-          key={van.employee + van.numSeats}
-        >
-          <h4 className="employee-txt">Employee</h4>
-          <p className="employee-name">{van.employee}</p>
-          <h4>Route</h4>
-          <p>{van.route}</p>
-          <h4 className="passenger-txt">Passengers</h4>
-          <div className={styles.absentPassengerContainer}>{passengerHtml}</div>
-        </div>
-      );
-    });
-
-    return vansHtml;
-  }
-
-  function UpdatedVansHtml({ vans }) {
-    if (!Array.isArray(vans)) {
-      console.log("Updated vans not working");
-      return null; // or an appropriate fallback
-    }
-
-    const vansHtml = vans.map((van) => {
-      const passengerHtml = van.passengers.map((passenger) => {
-        const { passengerName, location } = passenger;
-
-        return (
-          <p
-            className="passenger"
-            key={passengerName + location}
-            // draggable="true"
-            // onDragStart={() => handleDragStart(passenger, van)}
-            // onDragEnd={handleDragEnd}
-            // onDrag={handleDrag}
-          >
-            {passengerName}
-          </p>
-        );
-      });
-
-      return (
-        <div
-          className="van-container"
-          key={van.employee + van.numSeats}
-          // onDragOver={handleDragOver}
-          // onDragEnter={(e) => handleDragEnter(e)}
-          // onDragLeave={(e) => handleDragLeave(e)}
-          // onDrop={(e) => handleDrop(e, van)}
-        >
-          <h4 className="employee-txt">Employee</h4>
-          <p className="employee-name">{van.employee}</p>
-          <h4>Route</h4>
-          <p>{van.route}</p>
-          <h4 className="passenger-txt">Passengers</h4>
-          <div className="passenger-container">{passengerHtml}</div>
-        </div>
-      );
-    });
-
-    return vansHtml;
-  }
-
-  function AllVansHtml({ vans }) {
-    if (!Array.isArray(vans)) {
-      console.log("All vans not working");
-      return null; // or an appropriate fallback
-    }
-
-    const vansHtml = vans.map((van) => {
-      const passengerHtml = van.passengers.map((passenger) => {
-        const { passengerName, location } = passenger;
-
-        return (
-          <p className={styles.passenger} key={passengerName + location}>
-            {passengerName}
-          </p>
-        );
-      });
-
-      return (
-        <div
-          className={styles.uneditableVanContainer}
-          key={van.employee + van.numSeats}
-        >
-          <h4 className="employee-txt">Employee</h4>
-          <p className="employee-name">{van.employee}</p>
-          <h4>Route</h4>
-          <p>{van.route}</p>
-          <h4 className="passenger-txt">Passengers</h4>
-          <div className="passenger-container">{passengerHtml}</div>
-        </div>
-      );
-    });
-    return vansHtml;
-  }
 
   return (
     <>
       <h2>Today's Vans</h2>
       <h3>Absent Van</h3>
       <div className="van-list-container">
-        <InactiveVanHtml vans={inactiveVan} />
+        <InactiveVan vans={inactiveVan} />
       </div>
       <h3>Updated Vans</h3>
       <div className="van-list-container">
-        <UpdatedVansHtml vans={updatedVans} />
+        <UpdatedVans vans={updatedVans} />
       </div>
       <h3>All Vans for Today</h3>
       <div className="van-list-container">
-        <AllVansHtml vans={allVans} />
+        <AllVans vans={allVans} />
       </div>
     </>
   );
 }
+
