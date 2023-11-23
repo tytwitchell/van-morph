@@ -14,13 +14,20 @@ export default function Layout() {
   const [dbVans, setDbVans] = useState(vansInDb);
   const [selectedEmployee, setSelectedEmployee] = useState('');
   
+  // const [inactiveVanFromStorage, setInactiveVanFromStorage] = useState('')
+  
   return (
     <>
       <div className="page-wrapper">
         <Header />
         <main>
           <vanContext.Provider
-            value={{ dbVans, setDbVans, selectedEmployee, setSelectedEmployee }}
+            value={{
+              dbVans,
+              setDbVans,
+              selectedEmployee,
+              setSelectedEmployee
+            }}
           >
             <Outlet />
           </vanContext.Provider>
