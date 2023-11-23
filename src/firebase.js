@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-import { app, db, q, querySnapshot } from "./initfs";
+import { app, db, q, querySnapshot } from "../firestore-config";
 
 const vansInDb = [];
 
