@@ -9,7 +9,17 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-import { app, db, q, querySnapshot } from "../firestore-config";
+import { initializeApp } from "firebase/app";
+
+import { firebaseConfig } from "../firestore-config";
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const q = query(collection(db, "vans"), where("maxSeats", "==", 6));
+const querySnapshot = await getDocs(q);
+
 
 const vansInDb = [];
 
