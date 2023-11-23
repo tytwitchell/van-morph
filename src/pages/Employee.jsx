@@ -6,20 +6,34 @@ import Loading from "../components/Loading";
 import Banner from "../components/Banner/index";
 
 export default function Employee() {
-  const { dbVans, selectedEmployee, setSelectedEmployee } =
-    useContext(vanContext);
+  const {
+    dbVans,
+    selectedEmployee,
+    setSelectedEmployee
+  } = useContext(vanContext);
   const [loading, setLoading] = useState(false);
   const [warningBanner, setWarningBanner] = useState(false);
   const [errorBanner, setErrorBanner] = useState(false);
   const navigate = useNavigate();
   const selectRef = useRef(null);
+
+  const inactiveVanFromStorage = JSON.parse(
+    localStorage.getItem("inactiveVan")
+  )[0];
+
+  selectedEmployee
+    ? localStorage.setItem("selectedEmployee", JSON.stringify(selectedEmployee))
+    : "";
+
   const employeeSelectHtml = dbVans.map((van) => {
     return <option key={van.employee}> {van.employee} </option>;
   });
 
   useEffect(() => {
-    setSelectedEmployee(selectRef.current.value);
-  }, []);
+    if (inactiveVanFromStorage && !selectRef.current.value) {
+      setSelectedEmployee(inactiveVanFromStorage.employee);
+    }
+  }, [inactiveVanFromStorage]);
 
   function handleOptionChange(e) {
     setSelectedEmployee(e.target.value);
@@ -33,12 +47,19 @@ export default function Employee() {
       }
     });
 
-    if (!selectedEmployee) {
+    if (!selectRef.current.value) {
       setWarningBanner(true);
       setTimeout(() => setWarningBanner(false), 3250);
     } else if (selectedEmployeeVan.passengers.length < 1) {
       setErrorBanner(true);
       setTimeout(() => setErrorBanner(false), 3250);
+    } else if (
+      inactiveVanFromStorage &&
+      selectedEmployee === inactiveVanFromStorage.employee
+    ) {
+      console.log(
+        "Inactive employee is the same as previous inactive employee.  Data in Today's van will be reset. Continue??"
+      );
     } else if (selectedEmployee) {
       setLoading(true);
       setTimeout(() => setLoading(false), 2500);
