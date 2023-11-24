@@ -69,68 +69,66 @@ export default function VansForToday() {
    console.log("storageItem", JSON.parse(localStorage.getItem("updatedVans")));
    
   useEffect(() => {
-      const absentVanArr = [];
-      const availableVansArr = [];
-      const fullVansArr = [];
-      const passengerArr = [];
-      const updatedVansArr = [];
-      let remainingPassengers = [];
+    const absentVanArr = [];
+    const availableVansArr = [];
+    const fullVansArr = [];
+    const passengerArr = [];
+    const updatedVansArr = [];
+    let remainingPassengers = [];
 
-      if (selectedEmployee) {
-        for (let van of dbVans) {
-          if (van.employee === selectedEmployee) {
-            absentVanArr.push(van);
-            passengerArr.push(...van.passengers);
-          } else if (van.passengers.length < 6) {
-            availableVansArr.push(van);
-          } else {
-            fullVansArr.push(van);
-          }
-        }
-        setInactiveVan(absentVanArr);
-        setAvailableVans(availableVansArr);
-        setFullVans(fullVansArr);
-      }
-
-      const newVans = availableVans.map((van) => {
-        if (van.passengers.length < 6) {
-          const availableSeats = 6 - van.passengers.length;
-          const newPassengers = remainingPassengers
-            ? [...remainingPassengers.slice(0, availableSeats)]
-            : [...passengerArr.slice(0, availableSeats)];
-
-          const updatedPassengers = [...van.passengers, ...newPassengers];
-          const newVan = { ...van, passengers: updatedPassengers };
-          const unsortedPassengers = passengerArr.filter(
-            (passenger) => !updatedPassengers.includes(passenger)
-          );
-
-          remainingPassengers = [...unsortedPassengers];
-          updatedVansArr.push(newVan);
-
-          return newVan;
+    if (selectedEmployee) {
+      for (let van of dbVans) {
+        if (van.employee === selectedEmployee) {
+          absentVanArr.push(van);
+          passengerArr.push(...van.passengers);
+        } else if (van.passengers.length < 6) {
+          availableVansArr.push(van);
         } else {
-          return van;
+          fullVansArr.push(van);
         }
-      });
+      }
+      setInactiveVan(absentVanArr);
+      setAvailableVans(availableVansArr);
+      setFullVans(fullVansArr);
+    }
 
-      setUpdatedVans(updatedVansArr);
-      setAllVans([...newVans, ...fullVans]);
+    const newVans = availableVans.map((van) => {
+      if (van.passengers.length < 6) {
+        const availableSeats = 6 - van.passengers.length;
+        const newPassengers = remainingPassengers
+          ? [...remainingPassengers.slice(0, availableSeats)]
+          : [...passengerArr.slice(0, availableSeats)];
 
-      // inactiveVan
-      //   ? localStorage.setItem("inactiveVan", JSON.stringify(inactiveVan))
-      //   : "";
-      // availableVans
-      //   ? localStorage.setItem("availableVans", JSON.stringify(availableVans))
-      //   : "";
-      // updatedVans
-      //   ? localStorage.setItem("updatedVans", JSON.stringify(updatedVans))
-      //   : "";
-      // fullVans ? localStorage.setItem("fullVans", JSON.stringify(fullVans)) : "";
-      // allVans ? localStorage.setItem("allVans", JSON.stringify(allVans)) : "";
+        const updatedPassengers = [...van.passengers, ...newPassengers];
+        const newVan = { ...van, passengers: updatedPassengers };
+        const unsortedPassengers = passengerArr.filter(
+          (passenger) => !updatedPassengers.includes(passenger)
+        );
 
+        remainingPassengers = [...unsortedPassengers];
+        updatedVansArr.push(newVan);
 
-  }, []);
+        return newVan;
+      } else {
+        return van;
+      }
+    });
+
+    setUpdatedVans(updatedVansArr);
+    setAllVans([...newVans, ...fullVans]);
+
+    // inactiveVan
+    //   ? localStorage.setItem("inactiveVan", JSON.stringify(inactiveVan))
+    //   : "";
+    // availableVans
+    //   ? localStorage.setItem("availableVans", JSON.stringify(availableVans))
+    //   : "";
+    // updatedVans
+    //   ? localStorage.setItem("updatedVans", JSON.stringify(updatedVans))
+    //   : "";
+    // fullVans ? localStorage.setItem("fullVans", JSON.stringify(fullVans)) : "";
+    // allVans ? localStorage.setItem("allVans", JSON.stringify(allVans)) : "";
+  }, [selectedEmployee, inactiveVan]);
 
   // localStorage.clear();
   /**
