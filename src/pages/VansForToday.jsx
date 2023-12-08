@@ -12,13 +12,6 @@ import InactiveVan from "../components/VansForTodayHtml/InactiveVan"
 import UpdatedVans from "../components/VansForTodayHtml/UpdatedVans";
 import AllVans from "../components/VansForTodayHtml/AllVans";
 
-/**
- * 
- *IF NAV TO TODAYS VANS IS TRUE SET RERENDER STATE AS TRUE ON THIS PAGE TO RERENDER THE PAGE
- *  - add a state that is called Rerender and set to false.  Once loading screen is complete,
- *    change this state to true to rerender this page and have the vans rendered.
- */
-
 export default function VansForToday() {
   const { dbVans, selectedEmployee } = useContext(vanContext);
 
@@ -34,10 +27,11 @@ export default function VansForToday() {
   const [draggedVan, setDraggedVan] = useState(null);
 
   /**
+   * immediate next steps: 
    * HTML is not rendering automatically when user switches to the page (local storage is null for all except for inactive van
    * because inactive van storage was set on employee page)
    * add navLinks to separate "absent/updated vans" and "final vans for today" in Today's Vans
-   * add drag and drop UI
+   * enable drag and drop UI on this page
    * add ability to clear today's vans page (localstorage clear)
    */
 
@@ -117,17 +111,6 @@ export default function VansForToday() {
     setUpdatedVans(updatedVansArr);
     setAllVans([...newVans, ...fullVans]);
 
-    // inactiveVan
-    //   ? localStorage.setItem("inactiveVan", JSON.stringify(inactiveVan))
-    //   : "";
-    // availableVans
-    //   ? localStorage.setItem("availableVans", JSON.stringify(availableVans))
-    //   : "";
-    // updatedVans
-    //   ? localStorage.setItem("updatedVans", JSON.stringify(updatedVans))
-    //   : "";
-    // fullVans ? localStorage.setItem("fullVans", JSON.stringify(fullVans)) : "";
-    // allVans ? localStorage.setItem("allVans", JSON.stringify(allVans)) : "";
   }, [selectedEmployee, inactiveVan]);
 
   // localStorage.clear();
@@ -181,7 +164,6 @@ export default function VansForToday() {
   // }
 
 
-
   return (
     <>
       <h2>Today's Vans</h2>
@@ -189,14 +171,14 @@ export default function VansForToday() {
       <div className="van-list-container">
         <InactiveVan vans={inactiveVan} />
       </div>
-      <h3>Updated Vans</h3>
+      <h3>Vans for Today</h3>
       <div className="van-list-container">
         <UpdatedVans vans={updatedVans} />
       </div>
-      <h3>All Vans for Today</h3>
+      {/* <h3>All Vans for Today</h3>
       <div className="van-list-container">
         <AllVans vans={allVans} />
-      </div>
+      </div> */}
     </>
   );
 }
