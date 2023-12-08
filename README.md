@@ -75,7 +75,7 @@ In progress:
 
 # Stumbling and Learning Points
 
-- Figuring out how to rerender the displayed UI when the Firestore data was updated and not immediately when a passenger was dragged into a new van. I ended up importing and saving the updated firestore data in state and refactored the rendered HTML to map over the state variable
+- Figuring out how to rerender the displayed UI after drag and drop updates.  This was difficult because I needed to only when the database was updated and not immediately when a passenger was dragged into a new van. I ended up importing and saving the updated firestore data in state and refactored the rendered HTML to map over the state variable
 
 <img width="543" alt="saveInStateScreenShot" src="https://github.com/tytwitchell/van-morph/assets/135183794/c456a987-d118-4979-8fe0-3d15b5051527">
 
