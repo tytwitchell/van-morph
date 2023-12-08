@@ -28,7 +28,7 @@ https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8af
 
 1) Check the "Van List" section to see all existing vans in the database. Drag and drop passengers between vans for one-off updates.
 2) In the "Select Employee" section, choose the out-of-office employee. Click the "Next Step" button to navigate to the new passenger assignments.
-3) You will be navigated to the "Today's Vans" section where you can view the new temporary passenger assignments. The passengers from the "Absent Van" are now in new vans, displayed under "Today's Vans."
+3) You will be navigated to the "Today's Vans" section where you can view the new temporary passenger assignments. The passengers from the "Absent Van" are now in new vans, displayed under "Vans for Today."
 4) To add a new van to the database, use the form in the "Add Van" section.
   
 
