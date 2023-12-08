@@ -49,7 +49,6 @@ Completed:
 In progress: 
 - Enable ability to select multiple out of office employees.
 - Add ability to delete vans.
-- Create a secure login page.
 - Update UI for mobile
   
 
