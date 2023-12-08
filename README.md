@@ -48,7 +48,7 @@ Completed:
 - Added warning and loading messages when applicable.
   
 In progress: 
-- Enable ability to select more than one out of office employee.
+- Enable ability to select multiple out of office employees.
 - Add ability to delete vans.
 - Create a secure login page.
 
