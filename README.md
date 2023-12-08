@@ -4,11 +4,25 @@ I built this application to streamline one of my client's more time consuming da
 
 # In This Document
 
-1) Steps Taken to Create This Application
-2) Development Progress and Future Feature Sets
-3) Latest Features
-4) Technologies Used
-5) Stumbling and Learning Points
+1) Application URL
+2) Demo and Code Walkthrough
+3) How to Use the Application
+4) Steps Taken to Create This Application
+5) Development Progress and Future Feature Sets
+6) Latest Features
+7) Technologies Used
+8) Stumbling and Learning Points
+
+# Application URL
+
+https://vanmorph.netlify.app/
+
+# Demo and Code Walkthrough
+
+
+
+https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8afd-8e2b37c2b025
+
 
 
 # Steps Taken to Create this Application
@@ -30,24 +44,17 @@ Completed:
 - Created a form for saving van details (employee name, route, passengers).
 - Developed “drag and drop” UI that enables the user to move passengers manually from one van to another.
 - Enabled the user to select an out of office employee.
+- Added logic that assigns passengers from the out of office employee’s van to other vans based on capacity.
 - Added warning and loading messages when applicable.
   
 In progress: 
-- Enable UI to delete vans.
-- Add logic that assigns passengers from the out of office employee’s van to other vans based on capacity and proximity to route.
+- Enable ability to select more than one out of office employee.
+- Add ability to delete vans.
 - Create a secure login page.
 
 # Latest Features
 
-I updated the navbar to have it show when the user scrolls down and moves it out of the way when the user scrolls up. 
-
-https://github.com/tytwitchell/van-morph/assets/135183794/59147757-2bb5-43f3-b4ab-8314d5396e41
-
-
-I created a warning message to inform the user that they must select an employee before proceeding to the next step. This requirement ensures the application can effectively reallocate passengers from the out-of-office employee's van to other vans.
-
-https://github.com/tytwitchell/van-morph/assets/135183794/9e836a2e-edc3-4a05-ac98-3cca06cd8eae
-
+After selecting an employee, the application now sorts their passengers into other vans based on capacity requirements.  The updated passenger assignments are saved in local storage to prevent alterations to the main database. This precaution is taken because upon the employee's return to the office, the van assignments stored in the Firestore database will be utilized again.
 
 # Technologies Used
 
