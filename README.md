@@ -21,7 +21,6 @@ https://vanmorph.netlify.app/
 # Demo and Code Walkthrough
 
 
-
 https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8afd-8e2b37c2b025
 
 
@@ -51,8 +50,8 @@ In progress:
 - Enable ability to select multiple out of office employees.
 - Add ability to delete vans.
 - Create a secure login page.
+- Update UI for mobile
   
-
 
 # Steps Taken to Create this Application
 
