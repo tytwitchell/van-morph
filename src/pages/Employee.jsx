@@ -5,6 +5,13 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import Loading from "../components/Loading";
 import Banner from "../components/Banner/index";
 
+/**
+ * 
+ * Create option to select amount of OOO employees.  Then ability to assign employee names to drop down
+ * employee option length should be determined by amount of employees/vans 
+ * 
+ */
+
 export default function Employee() {
   const {
     dbVans,
@@ -17,9 +24,11 @@ export default function Employee() {
   const navigate = useNavigate();
   const selectRef = useRef(null);
 
+
   const inactiveVanFromStorage = JSON.parse(
     localStorage.getItem("inactiveVan")
-  )[0];
+  );
+
 
   selectedEmployee
     ? localStorage.setItem("selectedEmployee", JSON.stringify(selectedEmployee))

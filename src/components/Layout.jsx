@@ -12,10 +12,10 @@ export { vanContext };
 
 export default function Layout() {
   const [dbVans, setDbVans] = useState(vansInDb);
-  const [selectedEmployee, setSelectedEmployee] = useState('');
-  
+  const [selectedEmployee, setSelectedEmployee] = useState("");
+
   // const [inactiveVanFromStorage, setInactiveVanFromStorage] = useState('')
-  
+
   return (
     <>
       <div className="page-wrapper">
@@ -26,7 +26,7 @@ export default function Layout() {
               dbVans,
               setDbVans,
               selectedEmployee,
-              setSelectedEmployee
+              setSelectedEmployee,
             }}
           >
             <Outlet />

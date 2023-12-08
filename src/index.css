@@ -6,6 +6,7 @@
 html,
 body {
   margin: 0;
+
 }
 
 :root {
@@ -165,8 +166,6 @@ a {
 .nav-hidden {
   display: none
 }
-
-
 
 @media (hover: hover) {
   .header-scrolled:hover {
