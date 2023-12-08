@@ -7,11 +7,12 @@ I built this application to streamline one of my client's more time consuming da
 1) Application URL
 2) Demo and Code Walkthrough
 3) How to Use the Application
-4) Steps Taken to Create This Application
+4) Latest Features
 5) Development Progress and Future Feature Sets
-6) Latest Features
+6) Steps Taken to Create This Application
 7) Technologies Used
 8) Stumbling and Learning Points
+
 
 # Application URL
 
@@ -23,6 +24,34 @@ https://vanmorph.netlify.app/
 
 https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8afd-8e2b37c2b025
 
+
+# How to Use the Application
+
+1) Check the "Van List" section to see all existing vans in the database. Drag and drop passengers between vans for one-off updates.
+2) In the "Select Employee" section, choose the out-of-office employee. Click the "Next Step" button to navigate to the new passenger assignments.
+3) You will be navigated to the "Today's Vans" section where you can view the new temporary passenger assignments. The passengers from the "Absent Van" are now in new vans, displayed under "Today's Vans."
+4) To add a new van to the database, use the form in the "Add Van" section.
+  
+
+# Latest Features
+
+After selecting an employee, the application now sorts their passengers into other vans based on capacity requirements.  The updated passenger assignments are saved in local storage to prevent alterations to the main database. This precaution is taken because upon the employee's return to the office, the van assignments stored in the Firestore database will be utilized again.
+
+
+# Development Progress and Future Feature Sets
+
+Completed: 
+- Created a form for saving van details (employee name, route, passengers).
+- Developed “drag and drop” UI that enables the user to make one-off passenger assignment updates.
+- Enabled the user to select an out of office employee.
+- Added logic that assigns passengers from the out of office employee’s van to other vans based on capacity.
+- Added warning and loading messages.
+  
+In progress: 
+- Enable ability to select multiple out of office employees.
+- Add ability to delete vans.
+- Create a secure login page.
+  
 
 
 # Steps Taken to Create this Application
@@ -38,23 +67,6 @@ https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8af
 5) Ongoing Support: Once I release the minimum viable product for use, I will maintain constant communication with my client to identify areas for improvement and to expand the application's functionality to further assist his day-to-day tasks.
 
 
-# Development Progress and Future Feature Sets
-
-Completed: 
-- Created a form for saving van details (employee name, route, passengers).
-- Developed “drag and drop” UI that enables the user to move passengers manually from one van to another.
-- Enabled the user to select an out of office employee.
-- Added logic that assigns passengers from the out of office employee’s van to other vans based on capacity.
-- Added warning and loading messages when applicable.
-  
-In progress: 
-- Enable ability to select multiple out of office employees.
-- Add ability to delete vans.
-- Create a secure login page.
-
-# Latest Features
-
-After selecting an employee, the application now sorts their passengers into other vans based on capacity requirements.  The updated passenger assignments are saved in local storage to prevent alterations to the main database. This precaution is taken because upon the employee's return to the office, the van assignments stored in the Firestore database will be utilized again.
 
 # Technologies Used
 
