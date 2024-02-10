@@ -2,7 +2,6 @@ import React from "react";
 
 export default function UpdatedVans({ vans }) {
   if (!Array.isArray(vans)) {
-    console.log("Updated vans not working");
     return null;
   }
   const vansHtml = vans.map((van) => {

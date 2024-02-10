@@ -3,7 +3,6 @@ import styles from "./VansForToday.module.css";
 
 export default function InactiveVan({ vans }) {
   if (!Array.isArray(vans)) {
-    console.log("inactive vans not working");
     return null;
   }
   const vansHtml = vans.map((van) => {
