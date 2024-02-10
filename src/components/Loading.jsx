@@ -7,12 +7,10 @@ export default function Loading() {
   const [styles1, setStyles1] = useState({ opacity: 0 });
   const [styles2, setStyles2] = useState({ opacity: 0 });
   const [styles3, setStyles3] = useState({ opacity: 0 });
-
   useEffect(() => {
     const timeout1 = setTimeout(() => setStyles1({ opacity: 1 }), 750);
     const timeout2 = setTimeout(() => setStyles2({ opacity: 1 }), 1100);
     const timeout3 = setTimeout(() => setStyles3({ opacity: 1 }), 1500);
-
     return () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);

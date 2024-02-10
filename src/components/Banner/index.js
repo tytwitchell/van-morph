@@ -1,6 +1,6 @@
-import Banner from "./Banner"
-import BannerElement from "./BannerElement"
+import Banner from "./Banner";
+import BannerElement from "./BannerElement";
 
- Banner.Element = BannerElement
+Banner.Element = BannerElement;
 
-export default Banner
+export default Banner;

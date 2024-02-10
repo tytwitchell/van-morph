@@ -14,19 +14,15 @@ export default function AddVan() {
       Five: 5,
       Six: 6,
     };
-
     return numMap[writtenNum] || null;
   }
-
   function handleNumPassengers(e) {
     const selectedValue = e.target.value;
     const numValue = mapNumToValues(selectedValue);
     setNumPassengers(numValue);
   }
-
   function passengerInputHtml() {
     const passengerInputs = [];
-
     if (numPassengers) {
       for (let i = 0; i < numPassengers; i++) {
         passengerInputs.push(
@@ -40,7 +36,6 @@ export default function AddVan() {
             <span>Enter passenger name</span>
           </li>
         );
-
         passengerInputs.push(
           <li key={`location-${i}`}>
             <label htmlFor={`location-${i}`}>Location</label>
@@ -56,15 +51,12 @@ export default function AddVan() {
       return passengerInputs;
     }
   }
-
   function handleSubmit(e) {
     e.preventDefault();
     const employee = document.getElementById("input-employee").value;
     const route = document.getElementById("route").value;
     const numSeats = numPassengers;
     const passengers = [];
-    // const vanId = uuidv4();
-
     for (let i = 0; i < numPassengers; i++) {
       const passengerName = document.getElementById(
         `passenger-name-${i}`
@@ -73,15 +65,12 @@ export default function AddVan() {
       const uuid = uuidv4();
       passengers.push({ passengerName, location, uuid });
     }
-
     const formData = {
       employee,
       route,
       numSeats,
       passengers,
     };
-
-    console.log(formData);
     addToDb(formData);
   }
 
@@ -95,13 +84,11 @@ export default function AddVan() {
             <input type="text" name="employee-name" id="input-employee"></input>
             <span>Enter employee name here</span>
           </li>
-
           <li>
             <label htmlFor="route">Route</label>
             <input type="text" name="route" id="route"></input>
             <span>Enter the route location for this van</span>
           </li>
-
           <li>
             <label htmlFor="number">Passenger Count</label>
             <select

@@ -1,18 +1,14 @@
-import React from 'react'
+import React from "react";
 import styles from "./VansForToday.module.css";
 
 export default function AllVans({ vans }) {
   if (!Array.isArray(vans)) {
     console.log("All vans not working");
-    return null; // or an appropriate fallback
-
-    
+    return null;
   }
-
   const vansHtml = vans.map((van) => {
     const passengerHtml = van.passengers.map((passenger) => {
       const { passengerName, location } = passenger;
-
       return (
         <p className={styles.passenger} key={passengerName + location}>
           {passengerName}

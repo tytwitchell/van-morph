@@ -12,21 +12,17 @@ export default function Vans() {
   const { dbVans, setDbVans } = useContext(vanContext);
   const [draggedPassenger, setDraggedPassenger] = useState(null);
   const [draggedVan, setDraggedVan] = useState(null);
-
   function handleDragStart(passenger, van) {
     setDraggedPassenger(passenger);
     setDraggedVan(van);
   }
-
   function handleDragEnd() {
     setDraggedPassenger(null);
   }
-
   function handleDrop(e, targetVan) {
     e.preventDefault();
     e.currentTarget.classList.remove("drag-over");
     e.currentTarget.classList.remove("dragged-passenger");
-
     try {
       if (draggedPassenger && draggedVan !== targetVan) {
         handleAddNewPassenger(draggedPassenger, targetVan),
@@ -58,7 +54,6 @@ export default function Vans() {
       console.error("An error occurred:", error);
     }
   }
-
   const vansHtml = dbVans.map((van) => {
     const passengerHtml = van.passengers.map((passenger) => {
       const { passengerName, location } = passenger;
@@ -75,7 +70,6 @@ export default function Vans() {
         </p>
       );
     });
-
     return (
       <div
         className="van-container"
@@ -94,7 +88,6 @@ export default function Vans() {
       </div>
     );
   });
-
   return (
     <>
       <h1>Van List</h1>

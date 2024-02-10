@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .uneditableVanContainer,
@@ -17,13 +17,10 @@
   letter-spacing: 0.5px;
   text-align: left;
   align-items: last first baseline;
-
 }
 
-
 .absentPassengerContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .9rem;
-    
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
 }

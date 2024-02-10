@@ -1,5 +1,4 @@
 import React from "react";
-import { BannerContext } from "./Banner";
 import {
   AiOutlineCheckCircle,
   AiOutlineExclamationCircle,

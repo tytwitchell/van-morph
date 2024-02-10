@@ -6,7 +6,6 @@
 html,
 body {
   margin: 0;
-
 }
 
 :root {
@@ -95,7 +94,7 @@ a {
   height: auto;
   padding: 1rem;
   opacity: 1;
-  transition: top .5s ease;
+  transition: top 0.5s ease;
 }
 
 .header-top-hidden {
@@ -126,7 +125,8 @@ a {
   padding: 1rem;
   opacity: 0.9;
   box-shadow: 0 3px 10px -3px;
-  transition: opacity .5s ease, box-shadow 0s ease, background-color 0s ease, top .5s ease;
+  transition: opacity 0.5s ease, box-shadow 0s ease, background-color 0s ease,
+    top 0.5s ease;
 }
 
 .header-scroll-up {
@@ -143,7 +143,7 @@ a {
   padding: 1rem;
   opacity: 0.9;
   box-shadow: 0 3px 10px -3px;
-  transition: top .5s ease;
+  transition: top 0.5s ease;
 }
 
 .header-scroll-up a h1,
@@ -164,7 +164,7 @@ a {
 }
 
 .nav-hidden {
-  display: none
+  display: none;
 }
 
 @media (hover: hover) {
@@ -177,9 +177,6 @@ nav a:hover,
 nav a:focus {
   text-decoration: underline;
 }
-
-
-
 
 main {
   background-color: rgba(255, 255, 255, 0.85);
@@ -363,9 +360,9 @@ li > span {
 
 /************* VAN LIST STYLES *************/
 
- h3 {
+h3 {
   margin-top: 1.5rem;
- }
+}
 
 .van-list-container {
   display: flex;
@@ -532,7 +529,6 @@ li > span {
 
 .loading-container h2 {
   grid-column: 1 / -1;
-  
 }
 
 .smoke:nth-child(2) {

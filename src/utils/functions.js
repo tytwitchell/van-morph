@@ -1,5 +1,3 @@
-
-
 function handleDragOver(e) {
   e.preventDefault();
 }
@@ -18,9 +16,4 @@ function handleDragLeave(e) {
   e.currentTarget.classList.remove("dragged-passenger");
 }
 
-export {
-  handleDragOver,
-  handleDrag,
-  handleDragEnter,
-  handleDragLeave,
-};
+export { handleDragOver, handleDrag, handleDragEnter, handleDragLeave };
