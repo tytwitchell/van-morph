@@ -1,38 +1,25 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { vanContext } from "../components/Layout";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import Loading from "../components/Loading";
 import Banner from "../components/Banner/index";
 
 export default function Employee() {
   const { dbVans, selectedEmployee, setSelectedEmployee } =
     useContext(vanContext);
-  const [loading, setLoading] = useState(false);
   const [warningBanner, setWarningBanner] = useState(false);
   const [errorBanner, setErrorBanner] = useState(false);
   const navigate = useNavigate();
   const selectRef = useRef(null);
-  const inactiveVanFromStorage = JSON.parse(
-    localStorage.getItem("inactiveVan")
-  );
-  selectedEmployee
-    ? localStorage.setItem("selectedEmployee", JSON.stringify(selectedEmployee))
-    : "";
+  const inactiveVanFromStorage = [];
   const employeeSelectHtml = dbVans.map((van) => {
     return <option key={van.employee}> {van.employee} </option>;
   });
-  useEffect(() => {
-    if (inactiveVanFromStorage && !selectRef.current.value) {
-      setSelectedEmployee(inactiveVanFromStorage.employee);
-    }
-  }, [inactiveVanFromStorage]);
-
-  function handleOptionChange(e) {
+  const handleOptionChange = (e) => {
     setSelectedEmployee(e.target.value);
     e.target.value && setWarningBanner(false);
-  }
-  function handleBtnNextClick() {
+  };
+  const handleBtnNextClick = () => {
     const selectedEmployeeVan = dbVans.find((van) => {
       if (selectedEmployee && van.employee === selectedEmployee) {
         return van;
@@ -48,17 +35,12 @@ export default function Employee() {
       inactiveVanFromStorage &&
       selectedEmployee === inactiveVanFromStorage.employee
     ) {
-      console.log(
-        "Inactive employee is the same as previous inactive employee.  Data in Today's van will be reset. Continue??"
-      );
     } else if (selectedEmployee) {
-      setLoading(true);
-      setTimeout(() => setLoading(false), 2500);
-      setTimeout(() => navigate("../today"), 2500);
+      navigate("../today")
     } else {
-      console.log("error");
+      console.error();
     }
-  }
+  };
   return (
     <div className="employee-container">
       <h1>Select Employee</h1>
@@ -85,7 +67,6 @@ export default function Employee() {
           </button>
         </li>
       </ul>
-      {loading && <Loading />}
       {warningBanner && (
         <Banner>
           <Banner.Element
