@@ -12,14 +12,14 @@ export default function Vans() {
   const { dbVans, setDbVans } = useContext(vanContext);
   const [draggedPassenger, setDraggedPassenger] = useState(null);
   const [draggedVan, setDraggedVan] = useState(null);
-  function handleDragStart(passenger, van) {
+  const handleDragStart = (passenger, van) => {
     setDraggedPassenger(passenger);
     setDraggedVan(van);
   }
-  function handleDragEnd() {
+  const handleDragEnd = () => {
     setDraggedPassenger(null);
   }
-  function handleDrop(e, targetVan) {
+  const handleDrop = (e, targetVan) => {
     e.preventDefault();
     e.currentTarget.classList.remove("drag-over");
     e.currentTarget.classList.remove("dragged-passenger");

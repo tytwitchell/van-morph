@@ -9,7 +9,6 @@ export { vanContext };
 export default function Layout() {
   const [dbVans, setDbVans] = useState(vansInDb);
   const [selectedEmployee, setSelectedEmployee] = useState("");
-
   return (
     <>
       <div className="page-wrapper">

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function AddVan() {
   const [numPassengers, setNumPassengers] = useState(null);
 
-  function mapNumToValues(writtenNum) {
+  const mapNumToValues = (writtenNum) => {
     const numMap = {
       One: 1,
       Two: 2,
@@ -16,12 +16,12 @@ export default function AddVan() {
     };
     return numMap[writtenNum] || null;
   }
-  function handleNumPassengers(e) {
+  const handleNumPassengers = (e) => {
     const selectedValue = e.target.value;
     const numValue = mapNumToValues(selectedValue);
     setNumPassengers(numValue);
   }
-  function passengerInputHtml() {
+  const passengerInputHtml = () => {
     const passengerInputs = [];
     if (numPassengers) {
       for (let i = 0; i < numPassengers; i++) {
@@ -51,7 +51,7 @@ export default function AddVan() {
       return passengerInputs;
     }
   }
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const employee = document.getElementById("input-employee").value;
     const route = document.getElementById("route").value;

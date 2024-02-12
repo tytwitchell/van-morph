@@ -7,7 +7,7 @@ export default function Header() {
   const [fixedHeader, setFixedHeader] = useState(false);
   
   useEffect(() => {
-    function handleScroll() {
+    const handleScroll = () => {
       const header = document.querySelector("header");
       const currentScrollPos = window.scrollY;
       if (

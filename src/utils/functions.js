@@ -1,14 +1,14 @@
-function handleDragOver(e) {
+const handleDragOver = (e) => {
   e.preventDefault();
 }
-function handleDrag(e) {
+const handleDrag = (e) => {
   e.currentTarget.classList.add("dragged-passenger");
 }
-function handleDragEnter(e) {
+const handleDragEnter = (e) => {
   e.preventDefault();
   e.currentTarget.classList.add("drag-over");
 }
-function handleDragLeave(e) {
+const handleDragLeave = (e) => {
   e.currentTarget.classList.remove("drag-over");
   e.currentTarget.classList.remove("dragged-passenger");
 }
