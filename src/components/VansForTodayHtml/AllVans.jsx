@@ -3,7 +3,6 @@ import styles from "./VansForToday.module.css";
 
 export default function AllVans({ vans }) {
   if (!Array.isArray(vans)) {
-    console.log("All vans not working");
     return null;
   }
   const vansHtml = vans.map((van) => {
@@ -15,7 +14,6 @@ export default function AllVans({ vans }) {
         </p>
       );
     });
-
     return (
       <div
         className={styles.uneditableVanContainer}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { handleAddNewPassenger, handleRemovePassenger } from "../firebase";
 import { vanContext } from "../components/Layout";
 import {
@@ -27,7 +27,6 @@ export default function Vans() {
       if (draggedPassenger && draggedVan !== targetVan) {
         handleAddNewPassenger(draggedPassenger, targetVan),
           handleRemovePassenger(draggedVan, draggedPassenger);
-
         const updatedDbVans = [...dbVans];
         const draggedVanIndex = updatedDbVans.findIndex(
           (van) => van === draggedVan
@@ -35,26 +34,23 @@ export default function Vans() {
         const targetVanIndex = updatedDbVans.findIndex(
           (van) => van === targetVan
         );
-
         updatedDbVans[draggedVanIndex] = {
           ...draggedVan,
           passengers: draggedVan.passengers.filter(
             (passenger) => passenger !== draggedPassenger
           ),
         };
-
         updatedDbVans[targetVanIndex] = {
           ...targetVan,
           passengers: [...targetVan.passengers, draggedPassenger],
         };
-
         setDbVans(updatedDbVans);
       }
     } catch (error) {
       console.error("An error occurred:", error);
     }
   }
-  const vansHtml = dbVans.map((van) => {
+  const renderVansHtml = dbVans.map((van) => {
     const passengerHtml = van.passengers.map((passenger) => {
       const { passengerName, location } = passenger;
       return (
@@ -91,7 +87,7 @@ export default function Vans() {
   return (
     <>
       <h1>Van List</h1>
-      <div className="van-list-container">{vansHtml}</div>
+      <div className="van-list-container">{renderVansHtml}</div>
     </>
   );
 }
