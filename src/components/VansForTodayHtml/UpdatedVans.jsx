@@ -5,7 +5,7 @@ export default function UpdatedVans({ vans }) {
     return null;
   }
   const vansHtml = vans.map((van) => {
-    const passengerHtml = van.passengers.map((passenger) => {
+    const passengerHtml = van.passengers?.map((passenger) => {
       const { passengerName, location } = passenger;
       return (
         <p className="passenger" key={passengerName + location}>
@@ -24,6 +24,5 @@ export default function UpdatedVans({ vans }) {
       </div>
     );
   });
-
   return vansHtml;
 }

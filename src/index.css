@@ -3,51 +3,22 @@
   margin: 0;
 }
 
-html,
-body {
-  margin: 0;
-}
-
 :root {
-  /* gray styles */
-  --background-gray: #f3f4f6;
-  --color-gray: #1f2937;
-
   /* red styles */
   --background-red: #fee2e2;
   --color-red: #991b1b;
   --alt-background-red: #fddcdc;
   --alt-color-red: #b45309;
-
   /* yellow styles */
   --background-yellow: #fcd48ade;
   --color-yellow: #92400e;
   --alt-background-yellow: #fffbeb;
   --alt-color-yellow: #b45309;
-
-  /* green styles */
-  --background-green: #d1fae5;
-  --color-green: #065f46;
-  --alt-background-green: #ecfdf5;
-  --alt-color-green: #047857;
-
   /* blue styles */
   --background-blue: #dbeafe;
   --color-blue: #1e40af;
   --alt-background-blue: #eff6ff;
   --alt-color-blue: #1c51b9;
-
-  /* indigo styles */
-  --background-indigo: #e0e7ff;
-  --color-indigo: #3730a3;
-
-  /* purple styles */
-  --background-purple: #ede9fe;
-  --color-purple: #5b21b6;
-
-  /* pink styles */
-  --background-pink: #fce7f3;
-  --color-pink: #9d174d;
 }
 
 .page-wrapper {
@@ -204,7 +175,6 @@ h1 {
   text-align: center;
   padding: 0;
   margin: 0px 0px 20px 0px;
-  /* color: #5C5C5C; */
   font-size: x-large;
 }
 .form-add ul {
@@ -217,7 +187,6 @@ h1 {
 }
 
 .form-add li {
-  /* display: block; */
   padding: 9px;
   border: 1px solid #00253d42;
   margin-bottom: 1rem;
@@ -225,7 +194,6 @@ h1 {
 }
 
 .form-add li:not(:last-child):hover {
-  /* box-shadow: inset 3px 3px 5px -5px; */
   box-shadow: inset 2px 2px 8px -5px;
 }
 
@@ -486,6 +454,16 @@ h3 {
   box-shadow: inset 3px 3px 8px -3px #000000;
 }
 
+.pendingNoteContainer {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pendingNoteText {
+    font-weight: 400;
+}
+
 /********* Loading Container ***********/
 
 .loading-container {
@@ -493,14 +471,7 @@ h3 {
   grid-template-columns: 1rem 0.9rem 0.65rem 2.5rem;
   grid-template-rows: 50% 1.75rem 0.5rem 0.2rem;
   justify-content: center;
-  /* background-image: url("./assets/images/light-shadows.jpg"); */
-  /* --background-gray: #f3f4f6;
-  --color-gray: #1f2937; */
-
   background-color: rgba(232, 243, 249, 0.95);
-  /* background-blend-mode: lighten;
-  background-repeat: no-repeat;
-  background-size: cover; */
   color: #00253dd5;
   padding: 1rem;
   width: 80vw;
@@ -558,10 +529,6 @@ h3 {
 }
 
 /********** banner **********/
-
-/* .banner-container {
-  width: 100%;
-} */
 
 .banner-el-container {
   display: grid;
@@ -664,3 +631,5 @@ h3 {
   background-color: var(--alt-background-blue);
   color: var(--alt-color-blue);
 }
+
+
