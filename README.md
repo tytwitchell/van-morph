@@ -20,9 +20,7 @@ https://vanmorph.netlify.app/
 
 # Demo and Code Walkthrough
 
-
-https://github.com/tytwitchell/van-morph/assets/135183794/4e825b9c-78fc-4ef5-8afd-8e2b37c2b025
-
+https://github.com/tytwitchell/van-morph/assets/135183794/c8bb9d24-f6bc-4404-bb7b-f3e4e871a8c3
 
 # How to Use the Application
 
@@ -77,5 +75,6 @@ In progress:
 
 - My most recent update simplified the process of assigning passengers to their new vans by using a recursive function. This replaced the need for the previously used useEffects, loop methods, and useState variables.
 
-image.png
+![image](https://github.com/tytwitchell/van-morph/assets/135183794/083323c3-fb8b-4365-b42d-01d11886fe2a)
+
 
