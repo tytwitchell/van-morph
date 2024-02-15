@@ -7,11 +7,10 @@ I built this application to streamline one of my client's more time consuming da
 1) Application URL
 2) Demo and Code Walkthrough
 3) How to Use the Application
-4) Latest Features
-5) Development Progress and Future Feature Sets
-6) Steps Taken to Create This Application
-7) Technologies Used
-8) Code Highlights
+4) Development Progress and Future Feature Sets
+5) Steps Taken to Create This Application
+6) Technologies Used
+7) Code Highlights
 
 
 # Application URL
@@ -28,11 +27,6 @@ https://github.com/tytwitchell/van-morph/assets/135183794/c8bb9d24-f6bc-4404-bb7
 2) In the "Select Employee" section, choose the out-of-office employee. Click the "Next Step" button to navigate to the new passenger assignments.
 3) You will be navigated to the "Today's Vans" section where you can view the new temporary passenger assignments. The passengers from the "Absent Van" are now in new vans, displayed under "Vans for Today."
 4) To add a new van to the database, use the form in the "Add Van" section.
-  
-
-# Latest Features
-
-After selecting an employee, the application now sorts their passengers into other vans based on capacity requirements.  The updated passenger assignments are saved in local storage to prevent alterations to the main database. This precaution is taken because upon the employee's return to the office, the van assignments stored in the Firestore database will be utilized again.
 
 
 # Development Progress and Future Feature Sets
