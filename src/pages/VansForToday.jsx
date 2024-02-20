@@ -24,11 +24,8 @@ export default function VansForToday() {
       };
       const reassignPassengers = () => {
         const availableVan = findAvailableVan();
-        const numAvailableVanPassengers = availableVan.passengers.length;
-        if (
-          targetVanPassengersCopy.length > 0 &&
-          numAvailableVanPassengers < 6
-        ) {
+        const numPassengers = availableVan.passengers.length;
+        if (targetVanPassengersCopy.length > 0 && numPassengers < 6) {
           const firstPassenger = targetVanPassengersCopy.shift();
           addPassengerToVan(availableVan, firstPassenger);
           reassignPassengers();
