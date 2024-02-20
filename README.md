@@ -67,8 +67,9 @@ In progress:
 
 # Code Highlights
 
-- My most recent update simplified the process of assigning passengers to their new vans by using a recursive function. This replaced the need for the previously used useEffects, loop methods, and useState variables.
+- My most recent update simplified the process of assigning passengers to their new vans by using a recursive function.  The recursive loop will exit when the target van has zero passengers left to assign to new vans.  This function replaced the need for the previously used useEffects, loop methods, and useState variables.  
 
-![image](https://github.com/tytwitchell/van-morph/assets/135183794/083323c3-fb8b-4365-b42d-01d11886fe2a)
+![image](https://github.com/tytwitchell/van-morph/assets/135183794/391dfd96-0acc-4e39-88b2-f8d3d4da59f3)
+
 
 
